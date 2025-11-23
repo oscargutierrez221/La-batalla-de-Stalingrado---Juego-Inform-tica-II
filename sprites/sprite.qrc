@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/recursos">
+        <file>Walk.png</file>
+    </qresource>
+</RCC>
