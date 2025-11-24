@@ -22,6 +22,7 @@ private:
     int spritex_frame = 0;
     int delay = 0;
     QSize limites;
+    QGraphicsView *view;
 
 public:
     posicion_jugador(QGraphicsView *vista);
@@ -42,6 +43,6 @@ private:
 public:
     jugador(QGraphicsView *vista);
     
-}
+};
 
 #endif // JUGADOR_H

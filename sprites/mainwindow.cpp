@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "jugador.h"
+#include "niveles.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -8,11 +9,17 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
     QGraphicsScene *escena = new QGraphicsScene(this);
-    escena->setSceneRect(0,0,800,600);
     ui->graphicsView->setScene(escena);
+    this->setWindowTitle("La Batalla de Stalingrado");
+
+    niveles *nivel = new niveles(escena);
+    nivel->cargarNivel(1);
+    
     posicion_jugador *principal = new posicion_jugador(ui->graphicsView);
     escena->addItem(principal);
-    principal->setPos(200,200);
+    
+    principal->setPos(100, 430);
+    principal->setFocus();
 }
 
 MainWindow::~MainWindow()

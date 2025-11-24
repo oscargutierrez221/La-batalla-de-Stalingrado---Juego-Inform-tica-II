@@ -11,11 +11,13 @@ CONFIG += c++17
 SOURCES += \
     jugador.cpp \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    niveles.cpp
 
 HEADERS += \
     jugador.h \
-    mainwindow.h
+    mainwindow.h \
+    niveles.h
 
 FORMS += \
     mainwindow.ui
@@ -32,6 +34,7 @@ DISTFILES += \
     Attack.png \
     Dead.png \
     Explosion.png \
+    Fondo.jpg \
     Grenade.png \
     Hurt.png \
     Idle.png \

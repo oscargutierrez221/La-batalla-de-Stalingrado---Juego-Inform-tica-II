@@ -6,6 +6,7 @@ posicion_jugador::posicion_jugador(QGraphicsView *vista)
     x = 200;
     y = 200;
     limites = vista->size();
+    view = vista;
     setFlag(QGraphicsItem::ItemIsFocusable);
     if(hojaSprite.load(":/recursos/Walk.png")){
         spritey = 65;
@@ -21,11 +22,11 @@ void posicion_jugador::keyPressEvent(QKeyEvent *event){
     switch(event->key()){
         case Qt::Key_D:
             movimiento(5,0);
-            confSprite(65, false); // Normal (mirando a la derecha)
+            confSprite(65, false);
             break;
         case Qt::Key_A:
             movimiento(-5,0);
-            confSprite(65, true); // Invertido (mirando a la izquierda)
+            confSprite(65, true);
             break;
         case Qt::Key_W:
             movimiento(0,-5);
@@ -42,17 +43,20 @@ void posicion_jugador::keyPressEvent(QKeyEvent *event){
 }
 
 void posicion_jugador::movimiento(int dx, int dy){
-    if (x + dx < 0 || x + dx > limites.width() - sprite_ancho) {
-        return;
-    }
-    if (y + dy < 0 || y + dy > limites.height() - sprite_alto) {
-        return;
-    }
-    else{
-        x += dx;
-        y += dy;
-        setPos(x,y);
-    }
+    x += dx;
+    y += dy;
+    
+    QRectF sceneRect = scene()->sceneRect();
+    
+    if (x < 0) x = 0;
+    if (x > sceneRect.width() - sprite_ancho) x = sceneRect.width() - sprite_ancho;
+    
+    int suelo = 800;
+    if (y < suelo - 180) y = suelo - 180;
+    if (y > suelo) y = suelo;
+    
+    setPos(x, y);
+    view->centerOn(this);
 }
 
 void posicion_jugador::confSprite(int dir, bool invertir){
@@ -67,8 +71,7 @@ void posicion_jugador::confSprite(int dir, bool invertir){
     }
 
     sprite = hojaSprite.copy(spritex, spritey, sprite_ancho, sprite_alto);
-    
-    // Si invertir es true, volteamos la imagen horizontalmente
+
     if (invertir) {
         sprite = sprite.transformed(QTransform().scale(-1, 1));
     }
