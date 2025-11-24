@@ -29,4 +29,14 @@ RESOURCES += \
     sprite.qrc
 
 DISTFILES += \
+    Attack.png \
+    Dead.png \
+    Explosion.png \
+    Grenade.png \
+    Hurt.png \
+    Idle.png \
+    Recharge.png \
+    Run.png \
+    Shot_1.png \
+    Shot_2.png \
     Walk.png
