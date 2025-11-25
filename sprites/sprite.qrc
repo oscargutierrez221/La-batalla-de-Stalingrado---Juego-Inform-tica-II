@@ -1,6 +1,10 @@
 <RCC>
     <qresource prefix="/recursos">
         <file>Walk.png</file>
+        <file>Run.png</file>
         <file>Fondo.jpg</file>
+        <file>Shot_1.png</file>
+        <file>bala.png</file>
+        <file>Recharge.png</file>
     </qresource>
 </RCC>
