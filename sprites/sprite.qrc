@@ -5,5 +5,7 @@
         <file>Fondo.jpg</file>
         <file>Shot_1.png</file>
         <file>Recharge.png</file>
+        <file>Dead.png</file>
+        <file>Idle.png</file>
     </qresource>
 </RCC>
